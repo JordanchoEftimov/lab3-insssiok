@@ -1,5 +1,7 @@
 <template>
-    <div class="text-danger">Test</div>
+    <div class="text-danger">
+        <i class="fa fa-users"></i>
+    </div>
 </template>
 
 <script>
