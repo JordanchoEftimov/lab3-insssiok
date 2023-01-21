@@ -6,15 +6,15 @@ use App\Models\BlogPost;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class BlogPostController extends Controller
+class HomepageController extends Controller
 {
     public function __invoke(): Response
     {
         $blogPosts = BlogPost::query()
-            ->with('images')
             ->latest()
-            ->paginate();
+            ->take(3)
+            ->get();
 
-        return Inertia::render('BlogPost/Index', compact('blogPosts'));
+        return Inertia::render('Homepage', compact('blogPosts'));
     }
 }

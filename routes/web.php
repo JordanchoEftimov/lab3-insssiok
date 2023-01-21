@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\HomepageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,8 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Homepage');
-})->name('homepage');
+Route::get('/', HomepageController::class)->name('homepage');
+Route::get('/all', BlogPostController::class)->name('blog-posts.index');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('show_login');

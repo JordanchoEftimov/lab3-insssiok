@@ -1,18 +1,16 @@
 <template>
-    <div class="text-danger">
-        <i class="fa fa-users"></i>
-    </div>
+    <div></div>
 </template>
 
 <script>
 export default {
-    name: "Homepage",
+    name: "Index",
 };
 </script>
 <script setup>
 defineProps({
     blogPosts: {
-        type: Array,
+        type: Object,
         default: null,
     },
 });
