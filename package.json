@@ -27,6 +27,7 @@
     "dependencies": {
         "bootstrap": "^5.2.3",
         "font-awesome": "^4.7.0",
-        "sass": "^1.57.1"
+        "sass": "^1.57.1",
+        "vue-toastification": "^2.0.0-rc.5"
     }
 }
