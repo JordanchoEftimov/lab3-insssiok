@@ -17,6 +17,7 @@
             >
                 <blog-post-card :blog-post="blogPost" />
             </div>
+            <pagination :links="blogPosts.links" />
         </div>
     </div>
 </template>
@@ -31,6 +32,7 @@ export default {
 </script>
 <script setup>
 import BlogPostCard from "../../Components/BlogPostCard.vue";
+import Pagination from "../../Components/Pagination.vue";
 
 defineProps({
     blogPosts: {
