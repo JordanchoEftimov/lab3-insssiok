@@ -1,15 +1,15 @@
 <template>
     <div class="container py-5">
         <div
-            class="d-flex flex-column align-items-center justify-content-center"
             v-if="!blogPosts.length"
+            class="d-flex flex-column align-items-center justify-content-center"
         >
             <div>
                 <i class="fa fa-times fa-4x"></i>
             </div>
             <div class="fs-2">There are no blog posts posted yet.</div>
         </div>
-        <div class="row" v-else>
+        <div v-else class="row">
             <div
                 v-for="blogPost in blogPosts"
                 :key="blogPost.id"

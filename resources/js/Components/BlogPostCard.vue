@@ -1,9 +1,9 @@
 <template>
     <div
         class="card rounded-3 shadow"
+        :class="{ 'shadow-lg': hover }"
         @mouseenter="hover = true"
         @mouseleave="hover = false"
-        :class="{ 'shadow-lg': hover }"
     >
         <img
             src="https://autowelt.mk/storage/705905/cc3f8aa0-6290-4d3b-a16b-a5aa4bb6930a.jpg"

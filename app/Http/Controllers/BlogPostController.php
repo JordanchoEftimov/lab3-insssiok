@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogPostRequest;
 use App\Models\BlogPost;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -16,5 +19,16 @@ class BlogPostController extends Controller
             ->paginate();
 
         return Inertia::render('BlogPost/Index', compact('blogPosts'));
+    }
+
+    public function store(BlogPostRequest $request): RedirectResponse
+    {
+        DB::transaction(function () use ($request) {
+            $blogPost = new BlogPost($request->validated());
+            $blogPost->user()->associate(auth()->id());
+            $blogPost->save();
+        });
+
+        return back()->with('success', 'Successfully created your new blog post');
     }
 }

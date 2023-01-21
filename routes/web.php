@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomepageController::class)->name('homepage');
 Route::get('/all', BlogPostController::class)->name('blog-posts.index');
+Route::resource('blog-posts', BlogPostController::class)->only('store');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('show_login');
