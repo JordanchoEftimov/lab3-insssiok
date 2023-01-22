@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\MediaUsage;
 use App\Http\Requests\BlogPostRequest;
 use App\Models\BlogPost;
 use Illuminate\Http\RedirectResponse;
@@ -27,6 +28,7 @@ class BlogPostController extends Controller
             $blogPost = new BlogPost($request->validated());
             $blogPost->user()->associate(auth()->id());
             $blogPost->save();
+            $blogPost->uploadAndCreateImage($request->file('image'), MediaUsage::DEFAULT, 'blog-post-images/'.$blogPost->id, 500, 500);
         });
 
         return back()->with('success', 'Successfully created your new blog post');

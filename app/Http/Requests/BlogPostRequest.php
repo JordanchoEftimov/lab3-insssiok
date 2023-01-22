@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class BlogPostRequest extends FormRequest
 {
@@ -26,6 +27,7 @@ class BlogPostRequest extends FormRequest
         return [
             'title' => ['required', 'max:255'],
             'description' => ['required'],
+            'image' => ['required', File::image()],
         ];
     }
 }

@@ -20,6 +20,15 @@
                 name="description"
                 :invalid="form.errors.description"
             />
+            <input
+                :class="{ 'is-invalid': form.errors.image }"
+                ref="filePicker"
+                type="file"
+                @change="uploadImage($event)"
+            />
+            <div class="invalid-feedback">
+                {{ form.errors.image }}
+            </div>
         </template>
         <template #footer>
             <button
@@ -50,7 +59,14 @@ const modal = ref(null);
 const form = useForm({
     title: "",
     description: "",
+    image: null,
 });
+
+const uploadImage = (e) => {
+    if (e.target.files[0]) {
+        form.image = e.target.files[0];
+    }
+};
 
 const submit = () => {
     form.post(route("blog-posts.store"), {
