@@ -12,6 +12,7 @@ class HomepageController extends Controller
     {
         $blogPosts = BlogPost::query()
             ->latest()
+            ->with('images')
             ->take(3)
             ->get();
 
