@@ -1,6 +1,9 @@
 <template>
     <div
-        class="card rounded-3 shadow"
+        data-bs-toggle="modal"
+        data-bs-target="#openBlogPostModal"
+        :data-bs-blog-post="JSON.stringify(blogPost)"
+        class="card rounded-3 shadow cursor-pointer"
         :class="{ 'shadow-lg': hover }"
         @mouseenter="hover = true"
         @mouseleave="hover = false"
@@ -13,8 +16,8 @@
                 alt="Blog Post Thumbnail"
             />
             <div
-                class="h-100 w-100 d-flex align-items-center justify-content-center"
                 v-else
+                class="h-100 w-100 d-flex align-items-center justify-content-center"
             >
                 No images yet!!
             </div>

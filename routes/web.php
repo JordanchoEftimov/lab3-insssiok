@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomepageController::class)->name('homepage');
 Route::get('/all', BlogPostController::class)->name('blog-posts.index');
-Route::resource('blog-posts', BlogPostController::class)->only('store');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('show_login');
@@ -28,4 +27,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::resource('blog-posts', BlogPostController::class)->only('store');
+    Route::post('/blog-posts/{blogPost}/upload-image', [BlogPostController::class, 'uploadImage'])->name('blog-posts.upload-image');
 });

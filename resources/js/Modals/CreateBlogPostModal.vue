@@ -21,8 +21,8 @@
                 :invalid="form.errors.description"
             />
             <input
-                :class="{ 'is-invalid': form.errors.image }"
                 ref="filePicker"
+                :class="{ 'is-invalid': form.errors.image }"
                 type="file"
                 @change="uploadImage($event)"
             />
